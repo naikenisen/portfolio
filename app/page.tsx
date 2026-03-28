@@ -1,6 +1,5 @@
 import cv from "./data/cv";
 import Navbar from "./components/Navbar";
-import SkillsSection from "./components/SkillsSection";
 import PublicationsSection from "./components/PublicationsSection";
 import ProjectsSection from "./components/ReposSection";
 import VenturesSection from "./components/WebsitesSection";
@@ -20,10 +19,6 @@ export default function Home() {
             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
               <span className="gradient-text">{cv.name}</span>
             </h1>
-            <p className="text-xl text-zinc-400">{cv.title}</p>
-            <p className="max-w-2xl text-lg leading-relaxed text-zinc-300">
-              {cv.bio}
-            </p>
 
             {/* Contact & socials */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -57,9 +52,6 @@ export default function Home() {
 
         {/* ── Sections ──────────────────────────────── */}
         <div className="space-y-28">
-          <ScrollReveal>
-            <SkillsSection domains={cv.skillDomains} />
-          </ScrollReveal>
           <ScrollReveal>
             <VenturesSection ventures={cv.ventures} />
           </ScrollReveal>
