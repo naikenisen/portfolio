@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Isen Naiken — AI & Healthcare Portfolio",
   description:
-    "Portfolio of Isen Naiken: AI researcher, pharmacist, co-founder of Nexomedis, and editor-in-chief of Revue IA Santé.",
+    "Portfolio of Isen Naiken",
 };
 
 export default function RootLayout({
