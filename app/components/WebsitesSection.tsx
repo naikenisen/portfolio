@@ -1,47 +1,40 @@
-import type { Website } from "../data/cv";
+import type { Venture } from "../data/cv";
 
-export default function WebsitesSection({
-  websites,
+export default function VenturesSection({
+  ventures,
 }: {
-  websites: Website[];
+  ventures: Venture[];
 }) {
   return (
-    <section id="websites" className="space-y-6">
-      <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-        Websites & Demos
+    <section id="ventures" className="space-y-8">
+      <h2 className="text-center text-3xl font-bold tracking-tight text-white">
+        <span className="relative inline-block">
+          Ventures
+          <span className="absolute -bottom-3 left-0 right-0 h-px bg-gradient-to-r from-transparent via-rose-500/50 to-transparent" />
+        </span>
       </h2>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {websites.map((site) => (
+      <div className="grid gap-6 sm:grid-cols-2">
+        {ventures.map((v) => (
           <a
-            key={site.name}
-            href={site.url}
+            key={v.name}
+            href={v.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group overflow-hidden rounded-xl border border-zinc-200 transition-all hover:border-zinc-400 hover:shadow-md dark:border-zinc-800 dark:hover:border-zinc-600"
+            className="glass-card group rounded-2xl p-6 transition-all duration-300 hover:border-zinc-600 hover:shadow-lg hover:shadow-white/5"
           >
-            {/* Optional screenshot */}
-            {site.imageUrl && (
-              <div className="aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={site.imageUrl}
-                  alt={site.name}
-                  className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                />
-              </div>
-            )}
-            <div className="p-5">
-              <h3 className="font-semibold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-100 dark:group-hover:text-blue-400">
-                {site.name}
-              </h3>
-              <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                {site.description}
-              </p>
-              <span className="mt-3 inline-block text-xs text-blue-600 dark:text-blue-400">
-                Visit ↗
-              </span>
+            <div className="mb-3 text-xs font-medium uppercase tracking-wider text-zinc-500">
+              {v.role}
             </div>
+            <h3 className="text-xl font-bold text-white transition-colors group-hover:text-cyan-400">
+              {v.name}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+              {v.description}
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1 text-xs text-cyan-400 opacity-0 transition-opacity group-hover:opacity-100">
+              Visit ↗
+            </span>
           </a>
         ))}
       </div>

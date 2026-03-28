@@ -2,75 +2,73 @@ import cv from "./data/cv";
 import Navbar from "./components/Navbar";
 import SkillsSection from "./components/SkillsSection";
 import PublicationsSection from "./components/PublicationsSection";
-import ReposSection from "./components/ReposSection";
-import WebsitesSection from "./components/WebsitesSection";
+import ProjectsSection from "./components/ReposSection";
+import VenturesSection from "./components/WebsitesSection";
+import GeometricBackground from "./components/GeometricBackground";
+import ScrollReveal from "./components/ScrollReveal";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="w-full max-w-3xl bg-white px-6 py-12 dark:bg-black sm:px-16">
-        <Navbar />
+    <div className="relative min-h-screen">
+      <GeometricBackground />
+      <Navbar />
 
+      <main className="relative mx-auto max-w-5xl px-6 pb-24 pt-8">
         {/* ── Hero / About ──────────────────────────── */}
-        <section id="about" className="space-y-4 pb-16 pt-4">
-          <div className="flex items-center gap-5">
-            {cv.avatarUrl && (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={cv.avatarUrl}
-                alt={cv.name}
-                className="h-20 w-20 rounded-full object-cover"
-              />
-            )}
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                {cv.name}
-              </h1>
-              <p className="text-lg text-zinc-500 dark:text-zinc-400">
-                {cv.title}
-              </p>
+        <section id="about" className="pb-20 pt-8">
+          <div className="space-y-6">
+            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
+              <span className="gradient-text">{cv.name}</span>
+            </h1>
+            <p className="text-xl text-zinc-400">{cv.title}</p>
+            <p className="max-w-2xl text-lg leading-relaxed text-zinc-300">
+              {cv.bio}
+            </p>
+
+            {/* Contact & socials */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              {cv.email && (
+                <a
+                  href={`mailto:${cv.email}`}
+                  className="glass-card rounded-full px-4 py-2 text-sm text-zinc-300 transition-all hover:border-zinc-500 hover:text-white"
+                >
+                  {cv.email}
+                </a>
+              )}
+              {cv.location && (
+                <span className="glass-card rounded-full px-4 py-2 text-sm text-zinc-400">
+                  📍 {cv.location}
+                </span>
+              )}
+              {cv.socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-card rounded-full px-4 py-2 text-sm text-zinc-300 transition-all hover:border-zinc-500 hover:text-white"
+                >
+                  {s.label} ↗
+                </a>
+              ))}
             </div>
-          </div>
-
-          <p className="max-w-xl leading-7 text-zinc-600 dark:text-zinc-300">
-            {cv.bio}
-          </p>
-
-          {/* Contact & socials */}
-          <div className="flex flex-wrap items-center gap-3 text-sm">
-            {cv.email && (
-              <a
-                href={`mailto:${cv.email}`}
-                className="rounded-full border border-zinc-200 px-3 py-1 text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:text-zinc-400"
-              >
-                {cv.email}
-              </a>
-            )}
-            {cv.location && (
-              <span className="rounded-full border border-zinc-200 px-3 py-1 text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
-                📍 {cv.location}
-              </span>
-            )}
-            {cv.socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-zinc-200 px-3 py-1 text-zinc-600 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:text-zinc-400"
-              >
-                {s.label} ↗
-              </a>
-            ))}
           </div>
         </section>
 
         {/* ── Sections ──────────────────────────────── */}
-        <div className="space-y-20 pb-24">
-          <SkillsSection skills={cv.skills} />
-          <PublicationsSection publications={cv.publications} />
-          <ReposSection repos={cv.repos} />
-          <WebsitesSection websites={cv.websites} />
+        <div className="space-y-28">
+          <ScrollReveal>
+            <SkillsSection domains={cv.skillDomains} />
+          </ScrollReveal>
+          <ScrollReveal>
+            <VenturesSection ventures={cv.ventures} />
+          </ScrollReveal>
+          <ScrollReveal>
+            <ProjectsSection projects={cv.projects} />
+          </ScrollReveal>
+          <ScrollReveal>
+            <PublicationsSection publications={cv.publications} />
+          </ScrollReveal>
         </div>
       </main>
     </div>
